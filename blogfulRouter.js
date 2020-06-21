@@ -109,8 +109,7 @@ router.put('/:id', (req,res) => {
     }
 
     const updatedBlog = {};
-    const updateableFields = ['title','content','author'];
-    updateableFields.forEach(field=> updatedBlog[field] = req.body[field]);
+    Object.keys(req.body).forEach(field => updatedBlog[field] = req.body[field]);
     console.log(updatedBlog);
 
     BlogPost.findByIdAndUpdate(req.params.id, { $set: updatedBlog }, {new: true})
