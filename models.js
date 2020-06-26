@@ -38,16 +38,16 @@
    });//end of Schema declaration
 
    //Prehook that essential queries the Author collection using the info provided in the blogposts' "author" property to find and fill in the author key with the actual author document object.
-   blogPostSchema.pre('find', function(next) {
+   blogPostSchema.pre(['find', 'findOne'], function(next) {
        this.populate('author');
        next();
    });
 
-   //same as above, but listens for the findOne() query method aswell.
-   blogPostSchema.pre('findOne', function(next) {
-    this.populate('author');
-    next();
-  });
+//    //same as above, but listens for the findOne() query method aswell. ***EDIT: instead of having 2 pre hooks, i just inserted an array with bot "find" and "findOne" so now it will listen to both events
+//    blogPostSchema.pre('findOne', function(next) {
+//     this.populate('author');
+//     next();
+//   });
 
 //This provides a virtual property that gets added to the document programmatically
 //NOTE: ***** ()=> ARROW FUNCTIONS DO NOT WORK IN THE BELOW CODE!!!! nor do they work in the methods.serialize... code below!!! I think this is mongoose 
