@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const blogfulRouter = require('./blogfulRouter');
+const authorRouter = require('./authorRouter');
 
 const { PORT, DATABASE_URL } = require("./config");
 
@@ -17,7 +18,7 @@ app.use(morgan('common'));
 app.use(jsonParser);
 
 app.use('/blog-posts', blogfulRouter); //catches and routes all incoming http messages targeting /blog-posts address to the blogfulRouter
-
+app.use('/authors', authorRouter); //catches and routes all incoming for /authors endpoint
 
 // closeServer needs access to a server object, but that only
 // gets created when `runServer` runs, so we declare `server` here

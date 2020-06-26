@@ -7,11 +7,10 @@ const mongoose = require("mongoose");    // importing mongoose
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json(); //we aren't even using this. it's being used as middleware in the server.js
 
-mongoose.Promise = global.Promise; //you can readjust mongoose to use an alternative "Promise Library" like blubird or native ES6 promise. This will determine how we construct promises.
+// mongoose.Promise = global.Promise; //(Edit: this line has been deprecated and no longer needed in mongoose 5)    you can readjust mongoose to use an alternative "Promise Library" like blubird or native ES6 promise. This will determine how we construct promises.
 
 
-const {BlogPost} = require('./models');
-
+const {BlogPost, Author} = require('./models');
 
 
 // router.get('/', (req,res) => {
