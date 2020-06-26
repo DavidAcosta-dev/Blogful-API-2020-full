@@ -64,7 +64,7 @@ router.get('/',(req,res)=> {
 })//end of GET by value 
 
 router.post('/', (req,res) => {
-    const requiredFields = ['title', 'content', 'author'];
+    const requiredFields = ['title', 'content', 'author_id'];
     console.log(Object.keys(req.body).sort());
     console.log(requiredFields.sort());
     
@@ -73,14 +73,33 @@ router.post('/', (req,res) => {
             res.send('missing value').end();
         }
     }
-    const {title, author, content} = req.body;
-    BlogPost.create({title, author, content})
-    .then(pst => res.status(201).json(pst.serialize()))
-    .catch(err => {
-        console.error(err);
-        res.status(500).json({ error: 'Something went wrong' });
+
+    const {title, author_id, content} = req.body;
+    Author.findById(req.body.author_id)
+    .then( author => {
+        console.log(author);
+        console.log(req.body);
+        
+        if(!author) {
+            const message = 'Author not found, please check your author_id provided.';
+            console.error(message);
+            res.status(400).send(message).end();
+        }
+
+        BlogPost
+            .create({title, author, content})
+            .then(pst => res.status(201).json(pst.serialize()))
+            .catch(err => {
+                console.error(err);
+                res.status(500).json({ error: 'Something went wrong' });
+            })
+
     })
-})
+
+
+    
+
+})//end of POST
 /* ******Blog post must look like this*******:  
 {
     "title": "asdfasdfasdf",

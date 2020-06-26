@@ -27,7 +27,7 @@
 
   //This is the schema to represent a Blog post object
    const blogPostSchema = mongoose.Schema({
-       author: [{                //EDIT: we TRIED adding array brackets to make it possible to have MULTIPLE authors to one blogPost! But that just made the author key say "undefined undefined"
+       author: [{                //EDIT: I made it possible to have MULTIPLE authors to one blogPost! It made the author key say "undefined undefined" until i edited the .virtual() to accomodate the "author" key becoming an array.
            type: mongoose.Schema.Types.ObjectId, //mongoose library, schema structure, mongoosechema data type, objectId
            ref: 'Author' //needs to come from a document of the Author model. (Basically, tell mongoose to look in the 'Author' collection)
        }],  
