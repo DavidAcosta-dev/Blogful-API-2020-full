@@ -75,7 +75,7 @@ router.post('/', (req,res) => {
     }
 
     const {title, author_id, content} = req.body;
-    Author.findById(req.body.author_id)
+    Author.findById(author_id)
     .then( author => {
         console.log(author);
         console.log(req.body);
