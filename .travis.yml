@@ -2,3 +2,11 @@ language: node_js
 node_js: node
 services:
 - mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: DgQXXGctxWzQjj7cSNcSTvEhdoPMYjqlwryW4q7LLBOyiHTlF1I0ko4hErAGoKMeRCaefphj4dnA+YZ20wilQJD2VDp84BXhoEaeGNR6iz/vHaTk16uNz/RfhkN4PwlDZil6vh4ENYeMVHpACkPy6zQb28qypce27h6pboOn/Y8h6TUbVI3T73NoyAXL5q0UJrRq5xUgbQejWTTrK7jjV/nAcMg9mnWoVCCFuR4YzCS7xjMTgSbXfx7/skBHLqdb7YirOdNrcQun1lnz1diJBl5Wswb7lZcgjmr0f9DUdN5SArd4jrzmRaXdaq0415b3BknSsNDIGe/946MUrPneNoPlyX4Fwx8t4USvjhxbXL5hbiMqHzeEPGFUW8LPCSVpDcRuNncFx2fDMPWIbc1OqTfm/x6PmBptud0bOW++ZI8SpMhI3l9wwgLaDWekBOuxxb4Xh5vd6n9ytTYYEORsMXGLSVp3tVN+u89d4wqv7xZ2JxGEXtLhQUbfRemX6dDR9yMtXl1WonDXz2zTxff32mfkPAc0YEeyju2VRXVBlVwBBNmalLndehRbE0jxxBEoONuJ2iAoiaP4goYZI7L9ehV4J51UvlMYPH7vE+rx3jpErTBlNbiAkxuUbU7VL4JXQ6GC1UEqA0Lbht6f6GSda7OpwbWi7iZcZ23J1Z0lsMc=
+  app: Blogful-API-2020-full
+  on:
+    repo: Acosta816/Blogful-API-2020-full
+  skip_cleanup: 'true'
