@@ -37,7 +37,7 @@ router.get('/:id', (req,res) => {
     })
 });//end of GET /:id
 
-router.post('/', (req,res) => {
+router.post('/', (req,res) => { //A _v: key might show up after you create a document with mongoose. This is the version key but this can be removed by adding versionKey: false  to your schema. But for now, just leave it.
     const requiredFields = ['firstName', 'lastName', 'userName'];
     if(!requiredFields.every(field => Object.keys(req.body).includes(field))){
         res.status(400);
